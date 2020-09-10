@@ -39,6 +39,7 @@ import UserStaff from "../../Admin-component/UserStaff"
 import UserStudent from "../../Admin-component/UserStudent";
 import Assessment from "../../Admin-component/Assessment";
 import Placements from "../../Admin-component/Placements";
+import userstaffAdd from "../userstaffAdd";
 const ColoredLine = ({ color }) => (
   <hr
     style={{
@@ -148,6 +149,7 @@ const Content = ({id,sidebarIsOpen, toggleSidebar}) => (
       <Route path="/user-student" component={UserStudent}/>
       <Route path="/assessment" component={Assessment}/>
       <Route path="/Placements" component={Placements}/>
+      <Route path="/userstaffAdd" component={userstaffAdd}/>
     </Switch>
     <Footer />
   </Container>
