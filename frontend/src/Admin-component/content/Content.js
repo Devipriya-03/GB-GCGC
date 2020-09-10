@@ -40,6 +40,8 @@ import UserStudent from "../../Admin-component/UserStudent";
 import Assessment from "../../Admin-component/Assessment";
 import Placements from "../../Admin-component/Placements";
 import userstaffAdd from "../userstaffAdd";
+import EditStaff from "../edituserstaff";
+
 const ColoredLine = ({ color }) => (
   <hr
     style={{
@@ -150,6 +152,7 @@ const Content = ({id,sidebarIsOpen, toggleSidebar}) => (
       <Route path="/assessment" component={Assessment}/>
       <Route path="/Placements" component={Placements}/>
       <Route path="/userstaffAdd" component={userstaffAdd}/>
+      <Route exact path="/edituserstaff" component={EditStaff}/>
     </Switch>
     <Footer />
   </Container>

@@ -7,7 +7,7 @@ import Axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@material-ui/core/Tooltip";
-import RecordListuserstaff from './RecordListuserstaff';
+import  EditStaff from './edituserstaff';
 
 class  UserStaff extends Component { 
 	constructor(props) {
@@ -122,7 +122,7 @@ class  UserStaff extends Component {
 				                <tbody>
 			                      {this.state.staff.map((item =>
 			                      <tr>
-			                        <td>{item.Email_id}</td>
+			                        <td>{item.Emp_Id}</td>
 			                        <td>{item.Emp_Name}</td>
 			                        <td>{item.Email_id}</td>
 			                        <td>{item.Campus}</td>
@@ -130,7 +130,7 @@ class  UserStaff extends Component {
 			                        <td>{item.Mobile_No}</td>
 			                        <td>
 					                    <Tooltip title="Edit" placement="left">
-					                        <FontAwesomeIcon icon={faEdit} className="ml-2 p-1 fa-lg" style={{backgroundColor:'#2A324B',color:'white',fontSize:'20',borderRadius:'10'}}/>
+					                        <Link to={"/edituserstaff"} ><FontAwesomeIcon icon={faEdit} className="ml-2 p-1 fa-lg" style={{backgroundColor:'#2A324B',color:'white',fontSize:'20',borderRadius:'10'}}/></Link>
 					                    </Tooltip>
 					                    <Tooltip title="Delete" placement="right">
 					                        <FontAwesomeIcon icon={faTrash} onClick={()=>this.deletestaff()} className="ml-2 p-1" style={{backgroundColor:'#2A324B',color:'white',fontSize:'20',borderRadius:'10'}}/>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Table, Button } from "react-bootstrap";
-import { Form, FormGroup,Label,Input} from "reactstrap";
+import { Container ,Row, Col,Form, FormGroup,Label,Input} from "reactstrap";
 import {Redirect} from 'react-router';
 import Axios from 'axios';
 
@@ -70,7 +70,7 @@ class EditStaff extends Component {
         }
 
         componentDidMount(){
-          Axios.get("http://localhost/Admin-backend/EditTraining.php?id="+this.props.match.params.id)
+          Axios.get("http://localhost/Admin-backend/edituserstaff.php?id="+this.props.id)
           .then(response=>{
             this.setState({
               edit: response.data,
@@ -100,7 +100,7 @@ class EditStaff extends Component {
           Institution:this.state.Institution
         };
     console.log(obj);
-    Axios.post("http://localhost:80/Admin-backend/TrainingBoardUpdate.php",obj)
+    Axios.post("http://localhost:80/Admin-backend/userstaffupdate.php",obj)
       .then(res=>alert(res.data+"Updated Sucessfully"))
       .catch(err=>console.log(err))
       this.setState({
@@ -116,56 +116,110 @@ class EditStaff extends Component {
     }
     render(){
      return (
-        <div className="container">
-            <Form onSubmit={this.handleSubmit}>
-              <FormGroup>
-                <Label htmlfor="username">Employee Name</Label>
-                <Input type="text" id="Emp_Name"  value ={this.state.Emp_Name} name="Emp_Name" onChange={this.onChangeEname} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="email">Email </Label>
-                <Input type="text" id="Email_id" value={this.state.Email_id} name="Email_id" onChange={this.onChangeemail} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="Phone Number">Phone Number</Label>
-                <Input type="text" id="Mobile_No" value={this.state.Mobile_No} name="Mobile_No" onChange={this.onChangemobileno} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="Gender">Gender</Label>
-                
-                <input type="radio" id="male" name="gender" value={this.state.Gender}/>
-                <label for="male">Male</label>
-                <input type="radio" id="female" name="gender" value={this.state.Gender}/>
-                <label for="female">Female</label>
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="Designation">Designation</Label>
-                <Input type="text" id="Designation" value={this.state.Designation} name="Designation" onChange={this.onChangedesignation} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="Campus">Campus</Label>
-                <Input type="text" id="Campus" value={this.state.Campus} name="Campus" onChange={this.onChangecampus} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="Institution">Institution</Label>
-                <Input type="text" id="Institution" value={this.state.Institution} name="Institution" onChange={this.onChangeinstitution} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="Department">Department</Label>
-                <Input type="text" id="Department" value={this.state.Department} name="Department" onChange={this.onChangedepartment} />
-              </FormGroup>
-              <FormGroup>
-                <Label htmlfor="image">Image</Label>
-                <Input type="file" id="image"  name="image"  />
-              </FormGroup>
-              
-              <Button type="submit" value="submit" color="primary">
-                Submit
-              </Button>
-            </Form>
+        <div>
+          <Container>
+            <Row style={{backgroundColor: "#2A324B",color: "white",fontSize: "14px",fontFamily: "Segoe UI",fontWeight: "700"}}>
+              <Col xs="12" className="p-2" align="center">
+                <div>Edit Staff</div>
+              </Col>
+            </Row>
+            <Row style={{ backgroundColor: "white" }}>
+                <Col>
+                  <Form onSubmit={this.handleSubmit}>
+                    <Row>
+                      <Col lg="2"></Col>
+                      <Col lg="8">
+                      <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Employee ID:</Col>
+                            <Col lg="8">
+                              <input type="text" id="Emp_Id" value={this.state.Emp_Id} className="form-control" name="Emp_Id" onChange={this.onChangeempid} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Employee Name</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Emp_Name"  value ={this.state.Emp_Name} name="Emp_Name" onChange={this.onChangeEname} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Email ID:</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Email_id" value={this.state.Email_id} name="Email_id" onChange={this.onChangeemail} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Phone Number</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Mobile_No" value={this.state.Mobile_No} name="Mobile_No" onChange={this.onChangemobileno} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Gender</Col>
+                            <Col lg="8">
+                                <input type="radio" id="male" name="gender" value={this.state.Gender}/>
+                                <label for="male">Male</label>
+                                <input type="radio" id="female" name="gender" value={this.state.Gender}/>
+                                <label for="female">Female</label>
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Designation</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Designation" value={this.state.Designation} name="Designation" onChange={this.onChangedesignation} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Campus</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Campus" value={this.state.Campus} name="Campus" onChange={this.onChangecampus} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Institution</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Institution" value={this.state.Institution} name="Institution" onChange={this.onChangeinstitution} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Department</Col>
+                            <Col lg="8">
+                              <Input type="text" id="Department" value={this.state.Department} name="Department" onChange={this.onChangedepartment} />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4">Image</Col>
+                            <Col lg="8">
+                              <input type="file" className="form-control" />
+                            </Col>
+                          </Row>
+                          <Row>&nbsp;</Row>
+                          <Row>
+                            <Col lg="4"></Col>
+                            <Col lg="8">
+                              <Button>
+                                Upload
+                              </Button>
+                            </Col>
+                          </Row>
+                      </Col>
+                    </Row>
+                  </Form>
+                </Col>
+            </Row>
+            </Container>
         </div>
      )
     }
 }
 
-export default EditTraining
+export default EditStaff;
