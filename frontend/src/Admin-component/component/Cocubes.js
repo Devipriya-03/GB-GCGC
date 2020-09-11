@@ -138,8 +138,7 @@ class Cocubes extends React.Component {
             <Modal.Header closeButton>Edit Cocubes Marks</Modal.Header>
             <form onSubmit={this.onHandleCocubes}>
             <Modal.Body>
-                <Table className="cocubesedit" responsive>
-                  <tbody>
+                <Table responsive>
                     <tr>
                       <td>Aptitude</td>
                       <td>
@@ -187,14 +186,7 @@ class Cocubes extends React.Component {
                         <td>
                           <input type="text" name="WET"  value={this.state.WET} onChange={this.onChangeWET}/>
                         </td>
-                        </tr>
-                        <tr>
-                        <td>
-                        <ReactMultiSelectCheckboxes options={options} />
-                        </td>
-                        </tr>
-
-                  </tbody>
+                    </tr>
                 </Table>
                 </Modal.Body>
               <Modal.Footer>
