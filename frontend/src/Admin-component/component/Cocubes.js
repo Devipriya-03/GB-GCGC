@@ -7,7 +7,13 @@ import {
 import { Button, Modal } from "react-bootstrap";
 import {Radar} from 'react-chartjs-2';
 import Axios from 'axios';
+import reactmultiselect from "../reactmultiselect";
+import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
+const options = [
+  { label: 'Thing 1', value: 1},
+  { label: 'Thing 2', value: 2},
+];
 
 class Cocubes extends React.Component {
   constructor() {
@@ -127,101 +133,67 @@ class Cocubes extends React.Component {
           <Modal
             show={this.state.show}
             onHide={() => this.handleModalcocubes()}
-            size="lg"
-            style={{ maxWidth: "1600px", width: "80%" }}
+          //  style={{ maxWidth: "1600px", width: "80%" }}
           >
             <Modal.Header closeButton>Edit Cocubes Marks</Modal.Header>
             <form onSubmit={this.onHandleCocubes}>
             <Modal.Body>
                 <Table className="cocubesedit" responsive>
-                  <thead>
-                    <tr>
-                      <th>Aptitude</th>
-                      <th>English</th>
-                      <th>Quants</th>
-                      <th>Domain</th>
-                      <th>Analytical</th>
-                      <th>CF</th>
-                      <th>Coding</th>
-                      <th>WET</th>
-                    </tr>
-                  </thead>
                   <tbody>
                     <tr>
-                    <td>
-                        <input
-                          type="text"
-                          name="Aptitude"
-                          style={{ width: "50px" }}
-                          value={this.state.Aptitude}
-                          onChange={this.onChangeApptitude}
-
-                        />
-                      </td>
+                      <td>Aptitude</td>
                       <td>
-                        <input
-                          type="text"
-                          name="English"
-                          style={{ width: "50px" }}
-                          value={this.state.English}
-                          onChange={this.onChangeEnglish}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          name="Quants"
-                          style={{ width: "50px" }}
-                          value={this.state.Quantitative}
-                          onChange={this.onChangeQuant}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          name="Domain"
-                          style={{ width: "50px" }}
-                          value={this.state.Domain}
-                          onChange={this.onChangeDomain}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          name="Analytical"
-                          style={{ width: "50px" }}
-                          value={this.state.Analytical}
-                          onChange={this.onChangeAnalytical}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          name="CF"
-                          style={{ width: "50px" }}
-                          value={this.state.ComputerFundamentals}
-                          onChange={this.onChangeCF}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          name="Coding"
-                          style={{ width: "50px" }}
-                          value={this.state.Coding}
-                          onChange={this.onChangeCoding}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          name="WET"
-                          style={{ width: "50px" }}
-                          value={this.state.WET}
-                          onChange={this.onChangeWET}
-                        />
+                        <input type="text" name="Aptitude"  value={this.state.Aptitude} onChange={this.onChangeApptitude}  />
                       </td>
                     </tr>
+                    <tr>
+                      <td>English</td>
+                      <td>
+                        <input type="text" name="English"  value={this.state.English} onChange={this.onChangeEnglish}/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Quants</td>
+                      <td>
+                        <input type="text" name="Quants"  value={this.state.Quantitative} onChange={this.onChangeQuant}/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Domain</td>
+                      <td>
+                        <input type="text" name="Domain"  value={this.state.Domain} onChange={this.onChangeDomain}/>
+                      </td>
+                      </tr>
+                      <tr>
+                        <td>Analytical</td>
+                        <td>
+                          <input type="text" name="Analytical"  value={this.state.Analytical} onChange={this.onChangeAnalytical}/>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>CF</td>
+                        <td>
+                          <input type="text" name="CF"  value={this.state.ComputerFundamentals} onChange={this.onChangeCF}/>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Coding</td>
+                        <td>
+                          <input type="text" name="Coding"  value={this.state.Coding} onChange={this.onChangeCoding}/>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>WET</td>
+                        <td>
+                          <input type="text" name="WET"  value={this.state.WET} onChange={this.onChangeWET}/>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <ReactMultiSelectCheckboxes options={options} />
+                        </td>
+                        </tr>
+
                   </tbody>
                 </Table>
                 </Modal.Body>
