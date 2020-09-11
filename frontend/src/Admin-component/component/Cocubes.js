@@ -7,8 +7,7 @@ import {
 import { Button, Modal } from "react-bootstrap";
 import {Radar} from 'react-chartjs-2';
 import Axios from 'axios';
-import reactmultiselect from "../reactmultiselect";
-import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
+
 
 const options = [
   { label: 'Thing 1', value: 1},
