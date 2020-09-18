@@ -69,12 +69,19 @@ class EditStaff extends Component {
           });
         }
 
+        handleChange(e){
+          this.setState({
+            gender:e.target.value
+          });
+        }
         componentDidMount(){
-          Axios.get("http://localhost/Admin-backend/edituserstaff.php?id="+this.props.id)
-          .then(response=>{
+
+        
+          Axios.get("http://localhost/Admin-backend/edituserstaff.php?id="+this.props.match.params.id)
+          .then((response)=>{
             this.setState({
               edit: response.data,
-              Emp_Id: response.data[0].Emp_Id,
+              Emp_Id:response.data[0].Emp_Id,
               Emp_Name:response.data[0].Emp_Name,
               Email_id:response.data[0].Email_id,
               Campus:response.data[0].Campus,
@@ -87,10 +94,12 @@ class EditStaff extends Component {
           })
           .catch(err=>console.log(err))
         }
+
+
     handleSubmit(e){
         e.preventDefault();
         const obj={
-          Emp_Id:this.props.match.params.Emp_Id,
+          Emp_Id:this.props.match.params.id,
           Emp_Name:this.state.Emp_Name,
           Email_id:this.state.Email_id,
           Campus:this.state.Campus,
@@ -104,7 +113,7 @@ class EditStaff extends Component {
       .then(res=>alert(res.data+"Updated Sucessfully"))
       .catch(err=>console.log(err))
       this.setState({
-        Emp_Id:"",
+      
         Emp_Name:"",
         Email_id:"",
         Campus:"",
@@ -130,12 +139,6 @@ class EditStaff extends Component {
                       <Col lg="2"></Col>
                       <Col lg="8">
                       <Row>&nbsp;</Row>
-                          <Row>
-                            <Col lg="4">Employee ID:</Col>
-                            <Col lg="8">
-                              <input type="text" id="Emp_Id" value={this.state.Emp_Id} className="form-control" name="Emp_Id" onChange={this.onChangeempid} />
-                            </Col>
-                          </Row>
                           <Row>&nbsp;</Row>
                           <Row>
                             <Col lg="4">Employee Name</Col>
@@ -161,10 +164,11 @@ class EditStaff extends Component {
                           <Row>
                             <Col lg="4">Gender</Col>
                             <Col lg="8">
-                                <input type="radio" id="male" name="gender" value={this.state.Gender}/>
+                                <input type="radio" id="male" name="gender" value={this.state.Gender} />
                                 <label for="male">Male</label>
                                 <input type="radio" id="female" name="gender" value={this.state.Gender}/>
                                 <label for="female">Female</label>
+                        
                             </Col>
                           </Row>
                           <Row>&nbsp;</Row>
@@ -206,8 +210,8 @@ class EditStaff extends Component {
                           <Row>
                             <Col lg="4"></Col>
                             <Col lg="8">
-                              <Button>
-                                Upload
+                              <Button type="submit" value="submit" color="primary">
+                                Update
                               </Button>
                             </Col>
                           </Row>

@@ -9,14 +9,14 @@ class userstaffAdd extends React.Component {
         super(props);
         this.state = {
             
-            Emp_Id:"",
-            Emp_Name:"",
-            Email_id:"",
-            Campus:"",
-            Department:"",
-            Mobile_No:"",
-            Institution:"",
-            Designation:"",
+            empidno:"",
+            empname:"",
+            empemail:"",
+            camp:"",
+            empdept:"",
+            empmobile:"",
+            empinsti:"",
+            empdesig:"",
             Gender:""
             
           };
@@ -24,10 +24,10 @@ class userstaffAdd extends React.Component {
           this.onChangeempid=this.onChangeempid.bind(this);
           this.onChangeemail=this.onChangeemail.bind(this);
           this.onChangemobileno=this.onChangemobileno.bind(this);
-          this.onChangedesignation=this.onChangedesignation.bind(this);
+          this.onChangeempdesig=this.onChangeempdesig.bind(this);
           this.onChangecampus=this.onChangecampus.bind(this);
-          this.onChangeinstitution=this.onChangeinstitution.bind(this);
-          this.onChangedepartment=this.onChangedepartment.bind(this);
+          this.onChangeempinsti=this.onChangeempinsti.bind(this);
+          this.onChangeempdept=this.onChangeempdept.bind(this);
           this.onChangeEname=this.onChangeEname.bind(this);
           this.handleSubmit=this.handleSubmit.bind(this);
       
@@ -35,43 +35,43 @@ class userstaffAdd extends React.Component {
 
         onChangeempid(e){
           this.setState({
-            Emp_Id:e.target.value
+            empidno:e.target.value
           });
         }
 
         onChangeemail(e){
           this.setState({
-            Email_id:e.target.value
+            empemail:e.target.value
           });
         }
         onChangemobileno(e){
           this.setState({
-            Mobile_No:e.target.value
+            empmobile:e.target.value
           });
         }
-        onChangedesignation(e){
+        onChangeempdesig(e){
           this.setState({
-            Designation:e.target.value
+            empdesig:e.target.value
           });
         }
         onChangecampus(e){
           this.setState({
-          Campus:e.target.value
+          camp:e.target.value
           });
         }
-        onChangeinstitution(e){
+        onChangeempinsti(e){
           this.setState({
-            Institution:e.target.value
+            empinsti:e.target.value
           });
         }
-        onChangedepartment(e){
+        onChangeempdept(e){
           this.setState({
-            Department:e.target.value
+            empdept:e.target.value
           });
         }
         onChangeEname(e){
           this.setState({
-          Emp_Name:e.target.value
+          empname:e.target.value
           });
         }
 
@@ -79,28 +79,28 @@ class userstaffAdd extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const obj={
-          Emp_Id:this.state.Emp_Id,
-          Emp_Name:this.state.Emp_Name,
-          Email_id:this.state.Email_id,
-          Campus:this.state.Campus,
-          Department:this.state.Department,
-          Mobile_No:this.state.Mobile_No,
-          Designation:this.state.Designation,
-          Institution:this.state.Institution
+          empidno:this.state.empidno,
+          empname:this.state.empname,
+          empemail:this.state.empemail,
+          camp:this.state.camp,
+          empdept:this.state.empdept,
+          empmobile:this.state.empmobile,
+          empdesig:this.state.empdesig,
+          empinsti:this.state.empinsti
     };
     console.log(obj);
-    Axios.post("http://localhost:80/Admin-backend/userstaffadd.php",obj)
+    Axios.post("http://localhost/Admin-backend/userstaffadd.php",obj)
       .then(res=>alert(res.data+"Sucessfully Added"))
       .catch(err=>console.log(err))
       this.setState({
-        Emp_Id:"",
-        Emp_Name:"",
-        Email_id:"",
-        Campus:"",
-        Department:"",
-        Mobile_No:"",
-        Designation:"",
-        Institution:""
+        empidno:"",
+        empname:"",
+        empemail:"",
+        camp:"",
+        empdept:"",
+        empmobile:"",
+        empdesig:"",
+        empinsti:""
       })
   }
 
@@ -124,28 +124,28 @@ class userstaffAdd extends React.Component {
                   <Row>
                     <Col lg="4">Employee ID:</Col>
                     <Col lg="8">
-                      <input type="text" id="Emp_Id" value={this.state.Emp_Id} className="form-control" name="Emp_Id" onChange={this.onChangeempid} />
+                      <input type="text" id="empidno" value={this.state.empidno} className="form-control" name="empidno" onChange={this.onChangeempid} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
                     <Col lg="4">Employee Name</Col>
                     <Col lg="8">
-                      <Input type="text" id="Emp_Name"  value ={this.state.Emp_Name} name="Emp_Name" onChange={this.onChangeEname} />
+                      <Input type="text" id="empname"  value ={this.state.empname} name="empname" onChange={this.onChangeEname} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
                     <Col lg="4">Email ID:</Col>
                     <Col lg="8">
-                      <Input type="text" id="Email_id" value={this.state.Email_id} name="Email_id" onChange={this.onChangeemail} />
+                      <Input type="text" id="empemail" value={this.state.empemail} name="empemail" onChange={this.onChangeemail} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
                     <Col lg="4">Phone Number</Col>
                     <Col lg="8">
-                      <Input type="text" id="Mobile_No" value={this.state.Mobile_No} name="Mobile_No" onChange={this.onChangemobileno} />
+                      <Input type="text" id="empmobile" value={this.state.empmobile} name="empmobile" onChange={this.onChangemobileno} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
@@ -160,30 +160,30 @@ class userstaffAdd extends React.Component {
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
-                    <Col lg="4">Designation</Col>
+                    <Col lg="4">empdesig</Col>
                     <Col lg="8">
-                      <Input type="text" id="Designation" value={this.state.Designation} name="Designation" onChange={this.onChangedesignation} />
+                      <Input type="text" id="empdesig" value={this.state.empdesig} name="empdesig" onChange={this.onChangeempdesig} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
                     <Col lg="4">Campus</Col>
                     <Col lg="8">
-                      <Input type="text" id="Campus" value={this.state.Campus} name="Campus" onChange={this.onChangecampus} />
+                      <Input type="text" id="camp" value={this.state.camp} name="camp" onChange={this.onChangecampus} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
-                    <Col lg="4">Institution</Col>
+                    <Col lg="4">empinsti</Col>
                     <Col lg="8">
-                      <Input type="text" id="Institution" value={this.state.Institution} name="Institution" onChange={this.onChangeinstitution} />
+                      <Input type="text" id="empinsti" value={this.state.empinsti} name="empinsti" onChange={this.onChangeempinsti} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>
                   <Row>
-                    <Col lg="4">Department</Col>
+                    <Col lg="4">empdept</Col>
                     <Col lg="8">
-                      <Input type="text" id="Department" value={this.state.Department} name="Department" onChange={this.onChangedepartment} />
+                      <Input type="text" id="empdept" value={this.state.empdept} name="empdept" onChange={this.onChangeempdept} />
                     </Col>
                   </Row>
                   <Row>&nbsp;</Row>

@@ -152,7 +152,7 @@ const Content = ({id,sidebarIsOpen, toggleSidebar}) => (
       <Route path="/assessment" component={Assessment}/>
       <Route path="/Placements" component={Placements}/>
       <Route path="/userstaffAdd" component={userstaffAdd}/>
-      <Route exact path="/edituserstaff" component={EditStaff}/>
+      <Route exact path={"/edituserstaff/:id"} component={EditStaff}/>
     </Switch>
     <Footer />
   </Container>
