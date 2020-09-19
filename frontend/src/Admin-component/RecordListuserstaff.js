@@ -13,7 +13,7 @@ export default class RecordListuserstaff extends Component {
     deletestaff(){
         if(window.confirm('Are you sure to DELETE?'))
         {
-            fetch("http://localhost:80/Admin-backend/userstaffDelete.php?id="+222,
+            fetch("http://localhost:80/Admin-backend/userstaffDelete.php?id="+this.props.obj.Emp_Id,
             {
                 method:'DELETE',
                 header:{'Accept':'application/json',
