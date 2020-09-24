@@ -19,23 +19,23 @@ if(isset($postdata) && !empty($postdata)){
     $Inter=$request->Inter;
     $ListOfStudents=$request->ListOfStudents;
     $selected=$request->selected;
-    echo($selected[0]);
+    //echo($selected[0]);
     $to_date= strtotime($DateOfInter);
     $to = date('Y-m-d',$to_date);
-    if($result=mysqli_query($con,"select max(company_id) from `companies`")){
+    $sql1="select max(company_id) from `companies`";
+    $cid1=[];
+    if($result1=mysqli_query($con,$sql1)){
         $ct=0;
-        while($row=mysqli_fetch_assoc($result)){
-            $cid[$ct]=$row;
+        while($row1=mysqli_fetch_assoc($result1)){
+            $cid1[$ct]=$row1;
             $ct++;
         }
     }
-    $cid=json_decode(json_encode($cid[0]));
-    echo($cid->company_id);
-    $companyid=$cid->company_id;
-    $companyid++;
+    $cid1=json_decode(json_encode($cid1[0]));
+    echo($cid1);
     $sql="INSERT INTO `companies`(`company_id`,`company_name`,  `website_company`, `date_of_recruitment`, `job_description`, `gender`, `backlogs`, 
     `ssc_cutoff`, `12th_cutoff`) VALUES 
-    ($companyid,'$CompanyName','$CompanyURL','$to','$JobDescript','$Gender','$Backlogs','$SSC','$Inter')";
+    ($cid1->company_id+1,'$CompanyName','$CompanyURL','$to','$JobDescript','$Gender','$Backlogs','$SSC','$Inter')";
        if(mysqli_query($con,$sql)){
         echo("The data is inserted");
         $ct=0;
